@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/startFragment"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Start"
+        />
+    <item
+        android:id="@+id/menuChoiceFragment"
+        android:icon="@drawable/outline_add_notes_24"
+        android:title="Zamówienie"
+        />
+    <item
+        android:id="@+id/summaryFragment"
+        android:icon="@drawable/outline_article_24"
+        android:title="Podsumowanie"
+        />
+</menu>
