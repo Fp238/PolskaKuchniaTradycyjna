@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuChoiceFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".MenuChoiceFragment"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj nowe zamówienie"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/menuChoiceButtonReady"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:text="Dania gotowe"
+            android:layout_margin="10dp"
+            android:textSize="19dp"
+            />
+        <Button
+            android:id="@+id/menuChoiceButtonCustom"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:text="Skomponuj samemu"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+</LinearLayout>

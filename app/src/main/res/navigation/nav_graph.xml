@@ -22,7 +22,14 @@
         android:name="com.example.polskakuchniatradycyjna.MenuChoiceFragment"
         android:label="fragment_menu_choice"
         tools:layout="@layout/fragment_menu_choice"
-        />
+        >
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_readyMealFragment"
+            app:destination="@id/readyMealFragment" />
+        <action
+            android:id="@+id/action_menuChoiceFragment_to_customMealFragment"
+            app:destination="@id/customMealFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/readyMealFragment"
