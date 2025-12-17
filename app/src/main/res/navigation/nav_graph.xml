@@ -36,14 +36,22 @@
         android:name="com.example.polskakuchniatradycyjna.ReadyMealFragment"
         android:label="fragment_ready_meal"
         tools:layout="@layout/fragment_ready_meal"
-        />
+        >
+        <action
+            android:id="@+id/action_readyMealFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/customMealFragment"
         android:name="com.example.polskakuchniatradycyjna.CustomMealFragment"
         android:label="fragment_custom_meal"
         tools:layout="@layout/fragment_custom_meal"
-        />
+        >
+        <action
+            android:id="@+id/action_customMealFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/summaryFragment"
