@@ -6,12 +6,9 @@ Stworzyć aplikację mobilną dla restauracji „Polska Kuchnia Tradycyjna”, w
    - Zupy (lub brak zupy)
    - Dania głównego (gotowego lub komponowanego albo brak)
    - Napoju (lub brak napoju)
-3. Widoczny jest stały panel z podsumowaniem (TotalBar), który pokazuje:
-   - Koszt bieżącego zamówienia
-   - Koszt wszystkich zamówień razem
-4. Na dole aplikacji znajduje się pasek nawigacyjny (BottomNavigationView), umożliwiający przejście
+3. Na dole aplikacji znajduje się pasek nawigacyjny (BottomNavigationView), umożliwiający przejście
    między głównymi ekranami: Start, Zamówienie i Podsumowanie.
-5. Według uznania dodaj przynajmniej 3 różne obrazki związane z tematem.
+4. Według uznania dodaj przynajmniej 3 różne obrazki związane z tematem.
 
 
 
@@ -26,7 +23,6 @@ Zakres technologiczny
 	- Zamówienie	otwiera główny ekran wyboru: „Gotowe dania” lub „Komponuj sam”
 	- Podsumowanie	pokazuje aktualne i wszystkie złożone zamówienia
 - Animacje przejść między ekranami
-- Stały fragment z sumą zamówień
 
 Propozycja Struktura projektu
 ------------------
@@ -60,8 +56,6 @@ Logika ekranów
 4. CustomMealFragment – wybór składników, dodatków i napoju.
 5. SummaryFragment – podsumowanie zamówienia (z możliwością dodania kolejnej osoby). przycisk zakończ.
 
-6. TotalBarFragment – stale widoczny pasek z sumą bieżącego zamówienia i wszystkich zamówień.
-
 
 Model danych
 -------------
@@ -91,10 +85,6 @@ Wyświetla sumę bieżącego zamówienia i wszystkich zamówień.
 Obserwuje dane z ViewModel i aktualizuje UI na bieżąco.
 
 - Stały fragment TotalBarFragment
-	- Cel: informacyjny, szybki podgląd.
-	- Jest widoczny zawsze, niezależnie od ekranu.
-	- Pokazuje tylko dwie wartości liczbowe:
-
 	- Używa LiveData z ViewModel do automatycznej aktualizacji tych kwot.
 
 

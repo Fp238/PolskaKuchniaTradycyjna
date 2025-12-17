@@ -36,6 +36,7 @@
                 android:textSize="22dp"
                 />
             <RadioGroup
+                android:id="@+id/zupaRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
@@ -75,6 +76,7 @@
                 android:textSize="22dp"
                 />
             <RadioGroup
+                android:id="@+id/drugieDanieRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
@@ -114,6 +116,7 @@
                 android:textSize="22dp"
                 />
             <RadioGroup
+                android:id="@+id/napojRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >

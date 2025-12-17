@@ -42,6 +42,27 @@ class ReadyMealFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.readyMealButton.setOnClickListener {
+
+
+            val zupa = when (binding.zupaRadioGroup.checkedRadioButtonId) {
+                R.id.rosol -> "Rosół"
+                R.id.pomidorowa -> "Pomidorowa"
+                else -> "Brak"
+            }
+
+            val drugieDanie = when (binding.drugieDanieRadioGroup.checkedRadioButtonId) {
+                R.id.schabowy -> "Schabowy"
+                R.id.pierogi -> "Pieczony kurczak"
+                else -> "Brak"
+            }
+
+            val napoj = when (binding.napojRadioGroup.checkedRadioButtonId) {
+                R.id.kompot -> "Kompot"
+                R.id.sok -> "Sok"
+                else -> "Brak"
+            }
+
+
             findNavController().navigate(R.id.action_readyMealFragment_to_summaryFragment)
         }
     }
