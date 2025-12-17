@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Utwórz zamówienie"
+        android:text="Utwórz swoje zamówienie"
         android:textSize="30dp"
         android:textStyle="bold"
         android:layout_margin="20dp"
@@ -28,30 +28,41 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Zupa: "
-                android:textSize="22dp"
-                />
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Zupa: "
+                    android:textSize="22dp"
+                    />
+                <Spinner
+                    android:id="@+id/zupaSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    />
+            </LinearLayout>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
                 <RadioButton
-                    android:id="@+id/rosol"
+                    android:id="@+id/makaron"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="Rosół"
+                    android:text="Makaron"
                     />
                 <RadioButton
-                    android:id="@+id/pomidorowa"
+                    android:id="@+id/ryz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="Pomidorowa"
+                    android:text="Ryż"
                     />
             </RadioGroup>
         </LinearLayout>
@@ -67,32 +78,38 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Drugie danie: "
-                android:textSize="22dp"
-                />
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 >
-                <RadioButton
-                    android:id="@+id/schabowy"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Schabowy"
+                    android:layout_margin="5dp"
+                    android:text="Drugie danie: "
+                    android:textSize="22dp"
                     />
-                <RadioButton
-                    android:id="@+id/pierogi"
+                <Spinner
+                    android:id="@+id/drugieDanieSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Pierogi"
+                    android:layout_margin="5dp"
                     />
-            </RadioGroup>
+            </LinearLayout>
+            <CheckBox
+                android:id="@+id/surowka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Surówka"
+                />
+            <CheckBox
+                android:id="@+id/ziemniaki"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Ziemniaki"
+                />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -106,41 +123,53 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Napój: "
-                android:textSize="22dp"
-                />
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Napój: "
+                    android:textSize="22dp"
+                    />
+                <Spinner
+                    android:id="@+id/napojSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    />
+            </LinearLayout>
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
-                <RadioButton
-                    android:id="@+id/kompot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Kompot"
-                    />
-                <RadioButton
-                    android:id="@+id/sok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Sok"
-                    />
+            <RadioButton
+                android:id="@+id/cieply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Ciepły"
+                />
+            <RadioButton
+                android:id="@+id/zlodem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Z lodem"
+                />
             </RadioGroup>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 
     <Button
+        android:id="@+id/customMealButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Potwierdź"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="80dp"
         android:textSize="19dp"
         />
 </LinearLayout>

@@ -36,6 +36,7 @@
             android:text="Suma obecnego zamówienia:  zł | Łącznie:  zł"
             android:textSize="17dp"
             android:layout_margin="2dp"
+            android:gravity="center"
             />
     </com.google.android.material.appbar.AppBarLayout>
 
