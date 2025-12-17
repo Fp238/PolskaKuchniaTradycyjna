@@ -36,7 +36,7 @@
             android:layout_height="200dp"
             android:text="Skomponuj samemu"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="19dp"
             />
     </LinearLayout>
 </LinearLayout>
