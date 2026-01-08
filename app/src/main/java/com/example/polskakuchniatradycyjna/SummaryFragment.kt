@@ -39,8 +39,11 @@ class SummaryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.summaryButton.setOnClickListener{
+        binding.finishSummaryButton.setOnClickListener{
             findNavController().navigate(R.id.action_summaryFragment_to_startFragment)
+        }
+        binding.nextOrderSummaryButton.setOnClickListener{
+            findNavController().navigate(R.id.action_summaryFragment_to_menuChoiceFragment)
         }
     }
 

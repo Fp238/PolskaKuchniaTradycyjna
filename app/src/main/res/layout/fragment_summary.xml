@@ -38,19 +38,44 @@
             <ListView
                 android:id="@+id/summaryListView"
                 android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_margin="10dp"
+                />
+            <TextView
+                android:id="@+id/sumSummaryTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:text="Suma: zł"
+                android:textSize="19dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="right"
                 />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/summaryButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zatwierdź zamówienie"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:layout_marginBottom="80dp"
-        android:textSize="19dp"
-        />
-
+        >
+        <Button
+            android:id="@+id/nextOrderSummaryButton"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Dodaj zamówienie"
+            android:layout_margin="10dp"
+            android:textSize="19dp"
+            />
+        <Button
+            android:id="@+id/finishSummaryButton"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Zatwierdź zamówienia"
+            android:layout_margin="10dp"
+            android:textSize="19dp"
+            />
+    </LinearLayout>
 </LinearLayout>
