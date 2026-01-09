@@ -5,44 +5,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.polskakuchniatradycyjna.databinding.FragmentMenuChoiceBinding
 import com.example.polskakuchniatradycyjna.databinding.FragmentReadyMealBinding
+import com.example.polskakuchniatradycyjna.viewmodel.OrderViewModel
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class ReadyMealFragment : Fragment() {
-    private var _binding: FragmentReadyMealBinding?=null
-    private val binding get()=_binding!!
 
+    private var _binding: FragmentReadyMealBinding? = null
+    private val binding get() = _binding!!
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private val orderViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding= FragmentReadyMealBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentReadyMealBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.readyMealButton.setOnClickListener {
-
 
             val zupa = when (binding.zupaRadioGroup.checkedRadioButtonId) {
                 R.id.rosol -> "Rosół"
@@ -50,32 +37,33 @@ class ReadyMealFragment : Fragment() {
                 else -> "Brak"
             }
 
-            val drugieDanie = when (binding.drugieDanieRadioGroup.checkedRadioButtonId) {
+            val drugie = when (binding.drugieDanieRadioGroup.checkedRadioButtonId) {
                 R.id.schabowy -> "Schabowy"
-                R.id.pierogi -> "Pieczony kurczak"
-                else -> "Brak"
+                else -> "Pieczony kurczak"
             }
 
             val napoj = when (binding.napojRadioGroup.checkedRadioButtonId) {
                 R.id.kompot -> "Kompot"
-                R.id.sok -> "Sok"
-                else -> "Brak"
+                else -> "Sok"
             }
 
+            orderViewModel.setOrder(
+                zupa = zupa,
+                zupaDodatek = null,
+                drugie = drugie,
+                dodatki = emptyList(),
+                napoj = napoj,
+                napojTyp = null
+            )
 
-            findNavController().navigate(R.id.action_readyMealFragment_to_summaryFragment)
+            findNavController().navigate(
+                R.id.action_readyMealFragment_to_summaryFragment
+            )
         }
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReadyMealFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

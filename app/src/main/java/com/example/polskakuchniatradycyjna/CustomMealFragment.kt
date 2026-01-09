@@ -6,110 +6,82 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.polskakuchniatradycyjna.databinding.FragmentCustomMealBinding
 import com.example.polskakuchniatradycyjna.databinding.FragmentReadyMealBinding
+import com.example.polskakuchniatradycyjna.viewmodel.OrderViewModel
 
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class CustomMealFragment : Fragment() {
-    private var _binding: FragmentCustomMealBinding?=null
-    private val binding get()=_binding!!
 
+    private var _binding: FragmentCustomMealBinding? = null
+    private val binding get() = _binding!!
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private val orderViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding= FragmentCustomMealBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentCustomMealBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
 
         val zupy = listOf("Brak", "Rosół", "Pomidorowa")
         val drugieDania = listOf("Brak", "Schabowy", "Pieczony kurczak")
         val napoje = listOf("Brak", "Woda", "Kompot")
 
-        val zupaAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            zupy
-        )
-        zupaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.zupaSpinner.adapter = zupaAdapter
+        binding.zupaSpinner.adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, zupy)
 
-        val drugieDanieAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            drugieDania
-        )
-        drugieDanieAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.drugieDanieSpinner.adapter = drugieDanieAdapter
+        binding.drugieDanieSpinner.adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, drugieDania)
 
-        val napojAdapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            napoje
-        )
-        napojAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.napojSpinner.adapter = napojAdapter
+        binding.napojSpinner.adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, napoje)
 
+        binding.customMealButton.setOnClickListener {
 
+            val zupa = binding.zupaSpinner.selectedItem.toString()
+            val drugie = binding.drugieDanieSpinner.selectedItem.toString()
+            val napoj = binding.napojSpinner.selectedItem.toString()
 
-        binding.customMealButton.setOnClickListener{
-
-            val wybranaZupa = binding.zupaSpinner.selectedItem.toString()
-            val wybraneDrugie = binding.drugieDanieSpinner.selectedItem.toString()
-            val wybranyNapoj = binding.napojSpinner.selectedItem.toString()
-
-            val dodatekDoZupy = when (binding.zupaRadioGroup.checkedRadioButtonId) {
+            val zupaDodatek = when (binding.zupaRadioGroup.checkedRadioButtonId) {
                 R.id.makaron -> "Makaron"
                 R.id.ryz -> "Ryż"
-                else -> "Brak"
+                else -> null
             }
 
-            val dodatkiDoDrugiegoDania = mutableListOf<String>()
-            if (binding.surowka.isChecked) dodatkiDoDrugiegoDania.add("Surówka")
-            if (binding.ziemniaki.isChecked) dodatkiDoDrugiegoDania.add("Ziemniaki")
+            val dodatki = mutableListOf<String>()
+            if (binding.surowka.isChecked) dodatki.add("Surówka")
+            if (binding.ziemniaki.isChecked) dodatki.add("Ziemniaki")
 
-            val typNapoju = when (binding.napojRadioGroup.checkedRadioButtonId) {
+            val napojTyp = when (binding.napojRadioGroup.checkedRadioButtonId) {
                 R.id.cieply -> "Ciepły"
                 R.id.zlodem -> "Z lodem"
-                else -> "Brak"
+                else -> null
             }
 
+            orderViewModel.setOrder(
+                zupa,
+                zupaDodatek,
+                drugie,
+                dodatki,
+                napoj,
+                napojTyp
+            )
 
-
-            findNavController().navigate(R.id.action_customMealFragment_to_summaryFragment)
+            findNavController().navigate(
+                R.id.action_customMealFragment_to_summaryFragment
+            )
         }
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CustomMealFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
