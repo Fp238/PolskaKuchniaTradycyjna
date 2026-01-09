@@ -9,30 +9,30 @@ data class PersonOrder(
     val napoj: String,
     val typNapoju: String = "Brak"
 ) {
-    fun getTotalPrice(): Int {
-        var total = 0
+    fun getTotalPrice(): Double {
+        var total = 0.0
 
         total += when (zupa) {
-            "Rosół" -> 10
-            "Pomidorowa" -> 12
-            else -> 0
+            "Rosół" -> 10.0
+            "Pomidorowa" -> 12.0
+            else -> 0.0
         }
 
-        total += dodatkiDoZupy.size * 2
+        total += dodatkiDoZupy.size * 2.0
 
         total += when (drugieDanie) {
-            "Schabowy" -> 20
-            "Pieczony kurczak" -> 22
-            else -> 0
+            "Schabowy" -> 20.0
+            "Pieczony kurczak" -> 22.0
+            else -> 0.0
         }
 
-        total += dodatkiDoDrugiegoDania.size * 3
+        total += dodatkiDoDrugiegoDania.size * 3.0
 
         total += when (napoj) {
-            "Kompot" -> 5
-            "Woda" -> 3
-            "Sok" -> 6
-            else -> 0
+            "Kompot" -> 5.0
+            "Woda" -> 3.0
+            "Sok" -> 6.0
+            else -> 0.0
         }
 
         return total

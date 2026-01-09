@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.polskakuchniatradycyjna.databinding.FragmentMenuChoiceBinding
 import com.example.polskakuchniatradycyjna.databinding.FragmentReadyMealBinding
+import com.example.polskakuchniatradycyjna.model.PersonOrder
 import com.example.polskakuchniatradycyjna.viewmodel.OrderViewModel
 
 
@@ -16,7 +17,6 @@ class ReadyMealFragment : Fragment() {
 
     private var _binding: FragmentReadyMealBinding? = null
     private val binding get() = _binding!!
-
     private val orderViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -28,6 +28,7 @@ class ReadyMealFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.readyMealButton.setOnClickListener {
 
@@ -37,28 +38,27 @@ class ReadyMealFragment : Fragment() {
                 else -> "Brak"
             }
 
-            val drugie = when (binding.drugieDanieRadioGroup.checkedRadioButtonId) {
+            val drugieDanie = when (binding.drugieDanieRadioGroup.checkedRadioButtonId) {
                 R.id.schabowy -> "Schabowy"
-                else -> "Pieczony kurczak"
+                R.id.pierogi -> "Pieczony kurczak"
+                else -> "Brak"
             }
 
             val napoj = when (binding.napojRadioGroup.checkedRadioButtonId) {
                 R.id.kompot -> "Kompot"
-                else -> "Sok"
+                R.id.sok -> "Sok"
+                else -> "Brak"
             }
 
-            orderViewModel.setOrder(
+            val personOrder = PersonOrder(
                 zupa = zupa,
-                zupaDodatek = null,
-                drugie = drugie,
-                dodatki = emptyList(),
-                napoj = napoj,
-                napojTyp = null
+                drugieDanie = drugieDanie,
+                napoj = napoj
             )
 
-            findNavController().navigate(
-                R.id.action_readyMealFragment_to_summaryFragment
-            )
+            orderViewModel.addOrder(personOrder)
+
+            findNavController().navigate(R.id.action_readyMealFragment_to_summaryFragment)
         }
     }
 
